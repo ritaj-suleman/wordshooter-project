@@ -1,13 +1,15 @@
 #ifndef WORD_SHOOTER_CPP
 #define WORD_SHOOTER_CPP
 
-//#include <GL/gl.h>
+#include <GL/gl.h>
 #include <GL/glut.h>
 #include <iostream>
 #include<string>
 #include<cmath>
 #include<fstream>
 #include "util.h"
+#include <cstdlib> // For system() -> background music
+
 using namespace std;
 #define MAX(A,B) ((A) > (B) ? (A):(B)) // defining single line functions....
 #define MIN(A,B) ((A) < (B) ? (A):(B))
@@ -49,6 +51,16 @@ float velocityX = 0.0f; // X velocity of the alphabet
 float velocityY = 0.0f; // Y velocity of the alphabet
 
 float targetX = 0.0f, targetY = 0.0f; // Declare target position variables
+
+void playBackgroundMusic() {
+    // Play the WAV file in the background using 'aplay'
+    system("aplay background_music.wav &");
+}
+
+void stopBackgroundMusic() {
+    // Stop the 'aplay' process when needed
+    system("killall aplay");
+}
 
 enum alphabets {
 	AL_A, AL_B, AL_C, AL_D, AL_E, AL_F, AL_G, AL_H, AL_I, AL_J, AL_K, AL_L, AL_M, AL_N, AL_O, AL_P, AL_Q, AL_R, AL_S, AL_T, AL_U, AL_W, AL_X, AL_y, AL_Z
@@ -646,7 +658,22 @@ if (remainingTime>0)
 }
 else
 {
+   stopBackgroundMusic();
    cout<<"Game Over! Time's up."<<endl;
+   cout<<"Score: "<<score<<endl;
+   //dellocation of board array
+   for (int i = 0; i < nycells; i++) {
+    delete[] board[i]; 
+   }
+  delete[] board; 
+   //dellocation of grid array
+   for (int i = 0; i < nycells; i++) {
+    delete[] grid[i]; 
+   }
+  delete[] grid; 
+  
+  board = nullptr;
+  grid = nullptr;
    exit(0);
 }
 }
@@ -685,7 +712,7 @@ int main(int argc, char*argv[]) {
 	glutMouseFunc(MouseClicked);
 	glutPassiveMotionFunc(MouseMoved); // Mouse
 	
-
+       playBackgroundMusic(); // Start the background music
 	//// This function tells the library to call our Timer function after 1000.0/FPS milliseconds...
 	glutTimerFunc(1000.0/FPS, Timer, 0);
 
