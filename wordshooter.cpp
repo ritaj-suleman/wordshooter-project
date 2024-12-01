@@ -105,13 +105,11 @@ char numToChar(int num) {
 
 bool checkWordInGrid(const string &word, char ** grid, int row, int col, int dirX, int dirY, bool removeWord) {
     int wordLen = word.length();
-    
-    // Check if the word fits in the grid from (x, y) in direction (dx, dy)
+     // Check if the word fits in the grid from (x, y) in direction (dirx, diry)
     for (int i = 0; i < wordLen; ++i) {
         int nextX = row + i * dirX;
         int nextY = col + i * dirY;
-        
-        // Check if we are out of bounds
+          // Check if we are out of bounds
         if (nextX < 0 || nextX >= nycells || nextY < 0 || nextY >= nxcells) {
             return false;
         }
@@ -120,7 +118,6 @@ bool checkWordInGrid(const string &word, char ** grid, int row, int col, int dir
             return false;
         }
     }
-    
     // If removeWord is true, add score, remove it and replace with -1
     if (removeWord) {
     score+=wordLen;
@@ -141,7 +138,6 @@ bool checkWordInGrid(const string &word, char ** grid, int row, int col, int dir
     }
     return true;
 }
-
 bool isWordInGrid(const string &word, char ** grid) {
     for (int row = nycells-1; row >=0; --row) {
         for (int col = 0; col < nxcells; ++col) {
@@ -151,9 +147,9 @@ bool isWordInGrid(const string &word, char ** grid) {
             if (checkWordInGrid(word, grid, row, col, -1, 0,true)) 
             return true;  // Vertical
             if (checkWordInGrid(word, grid, row, col, 1, 1,true)) 
-            return true;  // Diagonal (down-right)
+            return true;  // Diagonal (up-left to right)
             if (checkWordInGrid(word, grid, row, col, -1, 1,true)) 
-            return true; // Diagonal (down-left)
+            return true; // Diagonal (down-left to right)
         }
     }
     return false;
@@ -173,6 +169,7 @@ for (int i=nycells-1; i>=0;i--)
 
  for (int i = 0; i < dictionarysize; ++i) {
         if (isWordInGrid(dictionary[i], grid)) {
+        cout<<dictionary[i]<<endl;
             addword2file(dictionary[i]);
         }
     }
@@ -180,9 +177,9 @@ for (int i=nycells-1; i>=0;i--)
 
 void InitializeBoard() {
     board = new int*[nycells]; // Allocate rows
-    for (int cy = 0; cy < nycells; ++cy) {
+    for (int cy = 0; cy < nycells; cy++) {
         board[cy] = new int[nxcells]; // Allocate columns
-        for (int cx = 0; cx < nxcells; ++cx) {
+        for (int cx = 0; cx < nxcells; cx++) {
             board[cy][cx] = -1; // Initialize all cells to empty (-1)
         }
     }
@@ -190,7 +187,7 @@ void InitializeBoard() {
 
 //grid =characters, board= integers values
     grid = new char*[nycells];  
-    for (int i = 0; i < nycells; ++i) {
+    for (int i = 0; i < nycells; i++) {
         grid[i] = new char[nxcells];  
     }
     
@@ -298,7 +295,7 @@ void RegisterTextures()
 	int length;
 	ifile.read((char*)&length, sizeof(int));
 	data.resize(length, 0);
-	for (int i = 0; i < nalphabets; ++i) {
+	for (int i = 0; i < nalphabets; i++) {
 		// Read current cookie
 		//ReadImage(tnames[i], data);
 		/*if (i == 0) {
@@ -377,8 +374,8 @@ void UpdateAlphabetPosition() {
         }
 
         // Collision detection with other alphabets
-        for (int cy = 0; cy < nycells; ++cy) {
-            for (int cx = 0; cx < nxcells; ++cx) {
+        for (int cy = 0; cy < nycells; cy++) {
+            for (int cx = 0; cx < nxcells; cx++) {
                 if (board[cy][cx] != -1) { // If a cell is occupied
                     int cellX, cellY;
                     Cell2Pixels(cx, cy, cellX, cellY);
@@ -474,8 +471,8 @@ void DrawShooter(int sx, int sy, int cwidth = 60, int cheight = 60)
 * Main Canvas drawing function.
 * */
 void DrawBoard() {
-    for (int row = 0; row < nycells; ++row) {
-        for (int col = 0; col < nxcells; ++col) {
+    for (int row = 0; row < nycells; row++) {
+        for (int col = 0; col < nxcells; col++) {
             if (board[row][col] != -1) { // If the cell is not empty
                 int cellX, cellY;
                 Cell2Pixels(col, row, cellX, cellY);
@@ -619,7 +616,7 @@ if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && !isAlphabetMoving) {
         float magnitude = sqrt(deltaX * deltaX + deltaY * deltaY);
         if (magnitude != 0) {
             // unit vector: normalized velocity 
-            velocityX = (deltaX / magnitude) * 10.0f; // 5 is for to control the speed
+            velocityX = (deltaX / magnitude) * 10.0f; // 10 is for to control the speed
             velocityY = (deltaY / magnitude) * 10.0f;
             isAlphabetMoving = true; // Start the alphabet's movement
         }
