@@ -20,7 +20,7 @@ string * dictionary;
 int dictionarysize = 369646;
 #define KEY_ESC 27 // A
 
-int remainingTime=120;
+int remainingTime=150;
 
 // 20,30,30
 const int bradius = 30; // ball radius in pixels...
