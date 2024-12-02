@@ -1,10 +1,3 @@
-/*
- * Board.cpp
- *
- *  Created on: May 2, 2014
- *      Author: Sibt ul Hussain
- */
-
 #include "Board.h"
 #include <cstdio>
 
