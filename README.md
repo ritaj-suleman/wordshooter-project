@@ -1,7 +1,7 @@
 # wordshooter-project-24i0112
 <p>Ritaj Suleman</p>
 <p>Programming Fundamental Final Project</p>
- **Word Shooter Game**
+<p>Word Shooter Game</p>
 
  **Description**  
 **Word Shooter** is a 2D game developed in **C++** using the **GLUT library**, where players shoot letters onto a grid to form valid words. The objective is to score as many points as possible by forming words within a time limit of 2 minutes. The game combines quick reflexes with word-forming skills for an engaging experience.
