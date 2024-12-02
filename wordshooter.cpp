@@ -1,3 +1,5 @@
+//Ritaj Suleman
+//2D word shooter game
 #ifndef WORD_SHOOTER_CPP
 #define WORD_SHOOTER_CPP
 
