@@ -1,9 +1,3 @@
-/*
- * Board.h
- *
- *  Created on: May 2, 2014
- *      Author: Sibt ul Hussain
- */
 #ifndef _BOARD_H_
 #define _BOARD_H_
 
