@@ -1,14 +1,14 @@
 # wordshooter-project-24i0112
 <p>Ritaj Suleman</p>
 <p>Programming Fundamental Final Project</p>
-# **Word Shooter Game**
+ **Word Shooter Game**
 
-### **Description**  
+ **Description**  
 **Word Shooter** is a 2D game developed in **C++** using the **GLUT library**, where players shoot letters onto a grid to form valid words. The objective is to score as many points as possible by forming words within a time limit of 2 minutes. The game combines quick reflexes with word-forming skills for an engaging experience.
 
 ---
 
-### **Key Features**  
+ **Key Features**  
 - **Dynamic Collision Detection:** Ensures letters land correctly in grid cells.
 - **Scoring System:** Points are calculated based on the length of the formed words.
 - **Word Detection Algorithm:** Recognizes words in all directions (horizontal, vertical, diagonal).
@@ -17,7 +17,7 @@
 
 ---
 
-### **How to Play**  
+ **How to Play**  
 1. **Shooting Letters:** Use the mouse to aim and shoot a letter onto the grid. The letter is launched at an angle towards the grid.
 2. **Word Formation:** Align letters on the grid to form valid words. Words can be formed:
    - Horizontally
@@ -28,16 +28,16 @@
 
 ---
 
-### **Technologies Used**  
+ **Technologies Used**  
 - **Programming Language:** C++  
 - **Graphics Library:** GLUT (OpenGL Utility Toolkit)  
 
 ---
 
-### **Installation and Setup**  
+ **Installation and Setup**  
 Follow these steps to set up and run the game on your local machine:
 
-#### **Prerequisites**  
+ **Prerequisites**  
 1. Install a C++ compiler (e.g., `g++`).  
 2. Install the GLUT library:
    - On Linux:
@@ -47,8 +47,7 @@ Follow these steps to set up and run the game on your local machine:
    - On Windows:
      - Download and set up GLUT libraries for your compiler.
 
-#### **Clone the Repository**  
+# **Clone the Repository**  
 ```bash
-git clone https://github.com/yourusername/wordshooter.git
-cd wordshooter
+gh repo clone ritaj-suleman/wordshooter-project-24i0112
 
