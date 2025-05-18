@@ -49,5 +49,5 @@ Follow these steps to set up and run the game on your local machine:
 
 # **Clone the Repository**  
 ```bash
-gh repo clone ritaj-suleman/wordshooter-project-24i0112
+gh repo clone ritaj-suleman/wordshooter-project
 
