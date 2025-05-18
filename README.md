@@ -1,4 +1,4 @@
-# wordshooter-project-24i0112
+# wordshooter-project
 <p>Ritaj Suleman</p>
 <p>Programming Fundamental Final Project</p>
 <p>Word Shooter Game</p>
